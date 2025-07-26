@@ -1,0 +1,71 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Python virtual environments
+.env
+.venv
+env/
+venv/
+*.env
+
+# Environment and package files
+*.egg-info/
+*.egg
+*.whl
+Pipfile.lock
+poetry.lock
+
+# Data folders (raw, processed, or exported)
+data/raw/
+data/processed/
+data/interim/
+*.csv
+*.tsv
+*.parquet
+*.xlsx
+
+# Model outputs
+models/
+*.joblib
+*.pkl
+*.sav
+*.h5
+
+# Logs and temp files
+logs/
+*.log
+*.tmp
+*.bak
+
+# Output folders (e.g., reports, figures)
+reports/figures/
+*.pdf
+*.png
+*.jpg
+*.svg
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Jupyter runtime history
+.history
+*.sqlite
+
+# Conda environment
+*.yaml
+*.yml
+
+# General project artifacts
+*.out
+*.aux
+*.toc
+*.nbconvert.ipynb
