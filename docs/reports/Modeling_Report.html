@@ -3854,7 +3854,7 @@ vertical-align: -.125em;
 <span class="menu-text">Modeling Report</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../dashboard.html"> 
+    <a class="nav-link" href="https://public.tableau.com/shared/8YKNCGB66?:display_count=n&amp;:origin=viz_share_link" rel="noopener" target="_blank"> 
 <span class="menu-text">Dashboard</span></a>
   </li>  
 </ul>
@@ -4066,6 +4066,13 @@ vertical-align: -.125em;
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
