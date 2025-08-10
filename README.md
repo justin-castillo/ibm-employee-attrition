@@ -67,7 +67,7 @@ This project demonstrates the value of combining linear interpretability with mo
 
 ---
 
-## 🔧 Repository Structure
+## Repository Structure
 
 ```
 .
@@ -87,7 +87,7 @@ This project demonstrates the value of combining linear interpretability with mo
 
 ---
 
-## 🔍 Next Steps
+## Next Steps
 
 - Add SHAP-based cohort profiling for team-level analysis.
 - Implement visual dashboards using Streamlit or Tableau.
