@@ -1,0 +1,359 @@
+[
+  {
+    "objectID": "reports/model_eval.html",
+    "href": "reports/model_eval.html",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "This report documents the modeling process and evaluation results using logistic regression as the baseline model for predicting employee attrition. The modeling was executed in 03_modeling.ipynb.\n\n\n\nWe used logistic regression due to its transparency and suitability for binary classification tasks with tabular data. The model was embedded in a pipeline with:\n\nCustom feature engineering (FeatureEngineer)\nColumn transformations (OneHot, Ordinal, StandardScaler)\nClass weighting set to 'balanced'\nSolver: 'liblinear'\nMaximum iterations: 1000\n\n\n\n\n\nThe initial model was evaluated using stratified 5-fold cross-validation on the training data.\nMetrics (mean across folds): - Accuracy: 0.85 - ROC AUC: 0.77 - Precision (Attrition = Yes): 0.49 - Recall (Attrition = Yes): 0.44 - F1 Score: 0.46\nThe model was well-calibrated, though recall was somewhat limited at the default threshold.\n\n\n\n\nUsing the validation set, we swept probability thresholds and identified the optimal threshold as:\nBest Threshold: 0.72\nThis was selected to maximize the F1 score for the minority class (Attrition = Yes).\n\n\n\n\nUsing the optimized threshold, we evaluated the model on the untouched test set.\nMetrics on Test Data:\n\nAccuracy: 0.86\nROC AUC: 0.78\nPrecision: 0.53\nRecall: 0.51\nF1 Score: 0.52\n\nConfusion Matrix:\n\n\n\n\nPredicted No\nPredicted Yes\n\n\n\n\nActual No\n233\n15\n\n\nActual Yes\n18\n19\n\n\n\nThis demonstrates meaningful improvements in recall and precision over the default threshold. The model correctly identifies approximately half of the attriting employees while maintaining a manageable false positive rate.\n\n\n\n\n\nRecall improved from 44% → 51% after threshold tuning.\nPrecision increased to 53%, indicating a better balance of false positives and true positives.\nROC AUC of 0.78 indicates strong overall ranking performance.\n\nThese results validate logistic regression as a transparent, balanced model that can reasonably distinguish between at-risk and stable employees when paired with domain-aware feature engineering and appropriate threshold tuning.\n\n\n\n\n\nUse SHAP values to explain individual predictions and global feature impacts.\nOptionally compare with higher-capacity models (e.g., CatBoost, XGBoost) to explore tradeoffs between accuracy and explainability.\nApply model to identify high-risk cohorts in operational HR data."
+  },
+  {
+    "objectID": "reports/model_eval.html#model-selection",
+    "href": "reports/model_eval.html#model-selection",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "We used logistic regression due to its transparency and suitability for binary classification tasks with tabular data. The model was embedded in a pipeline with:\n\nCustom feature engineering (FeatureEngineer)\nColumn transformations (OneHot, Ordinal, StandardScaler)\nClass weighting set to 'balanced'\nSolver: 'liblinear'\nMaximum iterations: 1000"
+  },
+  {
+    "objectID": "reports/model_eval.html#cross-validation-performance-threshold-0.5",
+    "href": "reports/model_eval.html#cross-validation-performance-threshold-0.5",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "The initial model was evaluated using stratified 5-fold cross-validation on the training data.\nMetrics (mean across folds): - Accuracy: 0.85 - ROC AUC: 0.77 - Precision (Attrition = Yes): 0.49 - Recall (Attrition = Yes): 0.44 - F1 Score: 0.46\nThe model was well-calibrated, though recall was somewhat limited at the default threshold."
+  },
+  {
+    "objectID": "reports/model_eval.html#threshold-tuning",
+    "href": "reports/model_eval.html#threshold-tuning",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "Using the validation set, we swept probability thresholds and identified the optimal threshold as:\nBest Threshold: 0.72\nThis was selected to maximize the F1 score for the minority class (Attrition = Yes)."
+  },
+  {
+    "objectID": "reports/model_eval.html#final-evaluation-on-test-set-threshold-0.72",
+    "href": "reports/model_eval.html#final-evaluation-on-test-set-threshold-0.72",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "Using the optimized threshold, we evaluated the model on the untouched test set.\nMetrics on Test Data:\n\nAccuracy: 0.86\nROC AUC: 0.78\nPrecision: 0.53\nRecall: 0.51\nF1 Score: 0.52\n\nConfusion Matrix:\n\n\n\n\nPredicted No\nPredicted Yes\n\n\n\n\nActual No\n233\n15\n\n\nActual Yes\n18\n19\n\n\n\nThis demonstrates meaningful improvements in recall and precision over the default threshold. The model correctly identifies approximately half of the attriting employees while maintaining a manageable false positive rate."
+  },
+  {
+    "objectID": "reports/model_eval.html#interpretation",
+    "href": "reports/model_eval.html#interpretation",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "Recall improved from 44% → 51% after threshold tuning.\nPrecision increased to 53%, indicating a better balance of false positives and true positives.\nROC AUC of 0.78 indicates strong overall ranking performance.\n\nThese results validate logistic regression as a transparent, balanced model that can reasonably distinguish between at-risk and stable employees when paired with domain-aware feature engineering and appropriate threshold tuning."
+  },
+  {
+    "objectID": "reports/model_eval.html#next-steps",
+    "href": "reports/model_eval.html#next-steps",
+    "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
+    "section": "",
+    "text": "Use SHAP values to explain individual predictions and global feature impacts.\nOptionally compare with higher-capacity models (e.g., CatBoost, XGBoost) to explore tradeoffs between accuracy and explainability.\nApply model to identify high-risk cohorts in operational HR data."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html",
+    "href": "notebooks/04_interpretation.html",
+    "title": "Interpretation",
+    "section": "",
+    "text": "This notebook delivers a comprehensive model evaluation and interpretability analysis to support data-driven retention strategies."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#model-performance",
+    "href": "notebooks/04_interpretation.html#model-performance",
+    "title": "Interpretation",
+    "section": "Model Performance",
+    "text": "Model Performance\nThe finalized logistic regression model achieves strong generalization, with: - Accuracy: 87.4%\n- Precision: 63.2%\n- ROC AUC: 0.827\nThese metrics confirm the model is well-calibrated to distinguish between likely attriters and stable employees."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#key-insights-from-shap-analysis",
+    "href": "notebooks/04_interpretation.html#key-insights-from-shap-analysis",
+    "title": "Interpretation",
+    "section": "Key Insights from SHAP Analysis",
+    "text": "Key Insights from SHAP Analysis\n\nPrimary Risk Signals: Frequent travel, overtime, short tenure\n\nProtective Factors: Long tenure, medical/life sciences education, managerial role\n\nNotable Pattern: Younger employees show consistently higher attrition risk\n\nSHAP summary and waterfall plots provide both global and case-level transparency into model behavior."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#strategic-takeaways-for-stakeholders",
+    "href": "notebooks/04_interpretation.html#strategic-takeaways-for-stakeholders",
+    "title": "Interpretation",
+    "section": "Strategic Takeaways for Stakeholders",
+    "text": "Strategic Takeaways for Stakeholders\n\nTarget high-burnout segments (e.g., Sales + frequent travel + overtime)\n\nReinforce retention signals early (e.g., through tenure-building policies and onboarding support)\n\nAlign interventions with risk profiles revealed in SHAP to maximize impact\n\nThe analysis integrates performance, explainability, and business relevance to guide effective, interpretable action."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#notebook-outline",
+    "href": "notebooks/04_interpretation.html#notebook-outline",
+    "title": "Interpretation",
+    "section": "Notebook Outline",
+    "text": "Notebook Outline\n\nFinal modeling assessment\n\nGlobal feature importance\n\nSelected individual predictions\n\nCoefficients\n\nFinal Conclusion"
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#load-artifacts",
+    "href": "notebooks/04_interpretation.html#load-artifacts",
+    "title": "Interpretation",
+    "section": "Load artifacts",
+    "text": "Load artifacts\nFirst, we load the logistic regression model (trained on transformed and SMOTE-resampled training data), preprocessed test set (engineered, scaled, and encoded), and test labels (y_final_test).\n\n\nLoaded 75 transformed feature names.\nLoaded model and data.\nX shape: (294, 75), y shape: (294, 1)"
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#shap-violin-plot-feature-impact-distribution",
+    "href": "notebooks/04_interpretation.html#shap-violin-plot-feature-impact-distribution",
+    "title": "Interpretation",
+    "section": "SHAP violin plot: feature impact distribution",
+    "text": "SHAP violin plot: feature impact distribution\nThis plot visualizes the distribution of SHAP values for each feature across individual employees. Each dot represents a single employee’s SHAP value, indicating the strength and direction of a feature’s influence:\n\nPositive SHAP values (right) indicate factors increasing attrition risk.\nNegative SHAP values (left) indicate factors reducing attrition risk.\nThe color intensity shows feature value magnitude (red = higher, blue = lower).\nPlots with just 2 distinct clusters are usually binary, with blue = 0 and red = 1.\nThe plot is ordered in descending impact on attrition risk from top to bottom.\n\nSummary of results\n\nFactors that are positively correlated with attrition risk (higher value / value of 1 = more attrition risk):\n\nTenureCategory &lt;=3 yrs\nOverTime Yes\nNumCompaniesWorked\nTenureCategory 4-10 yrs\nTravel Rarely Sales Executive\nDistanceFromHome\nMaritalStatus Single\nYearsSinceLastPromotion\nTravel Frequently Sales Representative\nTravel Rarely Laboratory Technician\n\nFactors that are negatively correlated with attrition risk (lower value / value of 0 = more attrition risk):\n\nEducationField Life Sciences\nSatisfactionMean\nTotalWorkingYears\nPercentSalaryHike\nEducationField Medical\nStockOptionLevel\nJobInvolvement\nEducationField Marketing\nAge\n\n\nTakeaways\n\nPositive correlations:\n\nTenure was the most impactful factor in predicting attrition risk. Tenure of less than 3 years was the top factor, while tenure of 4-10 years was less impactful but followed the same trend. Coupled with the impact of the amount of prior experience (NumCompaniesWorked was #3), suggests that new employees with more varied prior experience are likely to leave.\nOvertime Yes was the 2nd most impactful for risk of attrition, which is expected: longer hours may increase the risk of burnout.\n3 travel-related variables show up as most impactful - while they are not all Travel Frequently..., the pattern is clear: more travel = more attrition risk.\nLike overtime, DistanceFromHome had a predictable effect - longer commutes may cause employees to seek work closer to home.\nFinally, single (unmarried) employees, perhaps due to lifestyle instability (relative to married or divorced employees that may have families to take care of), as well as those who have had a long wait since their last promotion (frustration with perceived career stagnation) both signal that an employee may be heading for the exit or fail to meet performance expectations.\n\nNegative correlations:\n\nHaving an educational background in Medical, Life Sciences or Marketing decreased risk of attrition. Perhaps people with this background are a good fit for the company.\nPredictably, lower overall satisfactions scores (Environment, Job, Relationship) boosts attrition risk. Further investigation (the definition of each satisfaction score was unclear) is warranted to discern the specific factors leading to lower scores.\nA somewhat contradictory result follows - above, NumCompaniesWorked had a positive correlation with attrition, while here TotalWorkingYears has a negative one - this suggests that those who are experienced, but who tend to stay for longer at each company they work at (or those who have only worked for this company) are more likely to stick around. Perhaps this is the result of a generally more stable or contented disposition, or a sense of loyalty.\nThe lower the raise, the higher the risk that an employee will head for the door - this is an intuitive result. A lower StockOptionLevel has a similar effect.\nFinally, Age tells us that the younger an employee is, the more likely they are to leave, possibly due to lack of experience, restlessness, or early-career transitions."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#high-risk-case-most-confident-prediction",
+    "href": "notebooks/04_interpretation.html#high-risk-case-most-confident-prediction",
+    "title": "Interpretation",
+    "section": "High-Risk Case (Most Confident Prediction)",
+    "text": "High-Risk Case (Most Confident Prediction)\n\nReading a waterfall plot\n\nThe SHAP waterfall plot is best read from the bottom up. It shows exactly how the model arrived at its predicted probability of class 1 (Attrition = Yes).\n\nWe start at the baseline, which is the overall probability of attrition for the entire dataset. This is E[f(x)] = -1.331, located at the bottom of the plot. The negative value of the baseline shows that most employees are likely to stay.\nNow, look at “66 other features” - this is the influence of all 66 of the less-influential features on the predicted probability for this instance. In this case, they collectively shift the probability right by 1.26 points. A red arrow going right increases the likelihood of a model predicting Attrition = 1, while a blue arrow going left decreases this likelihood.\nThe graph continues upward, the probability being pushed left and right at greater magnitudes until we read the top of the graph, which is the most influential feature. In this case, it represents Travel Frequently Sales Representative.\nThe gray numbers to the left show the actual feature values used by the model. For continuous features, these values are standardized z-scores, representing the number of standard deviations above or below the mean (which is 0 after scaling).\n\n\n\n\nInterpretation\n\nSales Representative and Travel Frequently have been shown to increase attrition risk on their own, and together (combined into a single feature) they have nearly as much impact as the next 5 highest-impact features combined. This is an obvious starting point when targeting retention efforts and organizational changes - people in this role are clearly getting burnt out. Correspondingly, Overtime Yes comes in next, pushing the probability of attrition upwards for this instance.\nThis employee’s satisfaction scores indicate a positive view of their situation, however, contradicting the top most influential features. This had almost as much impact as overtime, albeit in the opposite direction. This may be a unique case where many of the top predictors of attrition apply to this employee, but the actual employee’s sentiments indicate satisfaction with his situation and thus, intuitively, a lower attrition risk than the model would suggest.\n\n\n\n\n\n\n\n\n\n\n\n\nBorderline Case (Near Threshold Prediction)\nThis case sits right at the decision boundary, meaning the model could easily predict one way or the other in terms of whether the employee will leave or stay. This helps capture the nuanced impact of less predictive features.\n\nTravel Rarely, as seen above, was one of the top predictors of attrition, although its impact is not as great as Travel Frequently. Note that the occupation for this employee is Sales Executive - the model consistently ranks employees in Sales (a department in which travel is presumably a more common requiremeent) as more likely to leave, and this is reflected here.\nThis employee’s educational background in Marketing counters this effect, however, indicating that employees with this background are a good fit for the Sales department’s demands, which makes intuitive sense (Sales and Marketing are closely related).\nThis employee’s tenure is between 4 and 10 years, but the effect is essentially negated by the fact that the employee’s tenure is not 3 years or below, so for this instance it turns out to be a non-factor.\nOther factors are less impactful, overshadowed by Travel, Job Role, and Education features. The fact that this employee is unmarried drives the probability of attrition upwards, while the absence of overtime demands drive it back down.\nUltimately, the model sided with the probability that the employee would stay with the company, due to a near-balance between features increasing and decreasing attrition risk.\n\n\n\n\n\n\n\n\n\n\n\n\nLow-Risk Case (Most Confident Negative Prediction)\nIn contrast, this employee is confidently predicted to stay:\n\nStrong indicators of professional stability — including substantial total working years, a managerial role, and recent salary increases — collectively outweigh any potential risks. Interestingly, frequent travel has been shown to be an indicator of attrition, but perhaps travel is made to be more pleasurable for employees with managerial roles (first class tickets / accomodations, etc.) so it becomes a retaining factor instead.\nA shorter tenure (≤3 years) marginally elevates attrition risk, yet this minor negative influence is effectively neutralized by stronger positive signals.\nA particularly short commute and a lack of overtime demands contribute to the model’s certainty that this individual will stay with the company."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#risk-amplifiers",
+    "href": "notebooks/04_interpretation.html#risk-amplifiers",
+    "title": "Interpretation",
+    "section": "Risk amplifiers",
+    "text": "Risk amplifiers\n\nFrequent-travel roles (Travel_Occupation_Travel_Frequently_*) dominate the upper tier—burnout and time away from home remain powerful push factors.\n\nOvertime (OverTime_JobLevel_Yes_* and OverTime_Yes) shows up repeatedly, underscoring workload pressure.\n\nShort tenure (TenureCategory_&lt;=3 yrs) confirms the classic early-exit pattern."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#risk-abators",
+    "href": "notebooks/04_interpretation.html#risk-abators",
+    "title": "Interpretation",
+    "section": "Risk abators",
+    "text": "Risk abators\n\nSpecialised or technical education (EducationField_Technical Degree, EducationField_Other) hints at stronger organisational fit and career paths.\n\nNon-travel managerial / HR positions (Non-Travel_*_Manager, *_Human Resources) align with lower turnover, likely due to better work–life balance.\n\nMarketing & R&D specialists post mild negative coefficients—role engagement can offset other stressors."
+  },
+  {
+    "objectID": "notebooks/04_interpretation.html#why-this-matters-next-to-shap",
+    "href": "notebooks/04_interpretation.html#why-this-matters-next-to-shap",
+    "title": "Interpretation",
+    "section": "Why This Matters Next to SHAP",
+    "text": "Why This Matters Next to SHAP\nCoefficients nail down direction and isolated strength; SHAP (previous sections) adds context and interaction effects. The overlap—travel frequency, overtime, and early tenure—strengthens confidence that these are genuine, actionable signals.\nBottom line:\nTravel intensity and high workload sit at the heart of attrition risk, while specialised skills, managerial stability, and advanced education anchor employees. Coefficients and SHAP together give a consistent, multi-angle narrative to steer targeted retention strategies.\n\n\n\n\n\n\n\n\n\nModel intercept: -3.566"
+  },
+  {
+    "objectID": "notebooks/02_preprocessing.html#notebook-overview",
+    "href": "notebooks/02_preprocessing.html#notebook-overview",
+    "title": "Preprocessing",
+    "section": "Notebook overview",
+    "text": "Notebook overview\nThis notebook alters the features to best capture the true nature of the data, based on the insights from the previous notebook. To do this, we define a class the encapsulates all of this logic, then wrap it in a reusable pipeline to ensure that there is no data leakage throughout the modeling process.\nTasks:\n\nApply custom feature engineering logic (FeatureEngineer) to extract meaningful patterns.\nEncode categorical variables using one-hot encoding.\nScale numeric features to help stabilize logistic regression modeling.\nCombine all preprocessing steps into a single Pipeline object.\nSave the full pipeline with joblib so we can apply it consistently later."
+  },
+  {
+    "objectID": "notebooks/02_preprocessing.html#notebook-outline",
+    "href": "notebooks/02_preprocessing.html#notebook-outline",
+    "title": "Preprocessing",
+    "section": "Notebook outline:",
+    "text": "Notebook outline:\n\nReload data\n\nValidation\n\nFeature engineering pipeline\n\nPreprocessing summary\n\n\n\nPreprocessing environment initialized."
+  },
+  {
+    "objectID": "notebooks/02_preprocessing.html#featureengineer-and-make_preprocessing_pipeline",
+    "href": "notebooks/02_preprocessing.html#featureengineer-and-make_preprocessing_pipeline",
+    "title": "Preprocessing",
+    "section": "FeatureEngineer() and make_preprocessing_pipeline",
+    "text": "FeatureEngineer() and make_preprocessing_pipeline\nTo capture interactions between features, and to make features suitable for modeling, all feature engineering logic is placed inside of class FeatureEngineer. This is helpful because it avoids having to repeat logic in subsequent notebooks.\nBelow is a breakdown of each added/modified feature:\n\nTenure and experience features\n\nTenureCategory\nBuckets YearsAtCompany into tenure groups:\n- 0–3 yrs\n- 4–6 yrs\n- 7–10 yrs\n- 10+ yrs\nThis captures key career stage segments, which may correspond to different attrition risks.\nTenureGap\nCalculates: YearsInCurrentRole − YearsAtCompany\nEmployees who may have changed roles internally versus those who stayed static, potentially indicating engagement or stagnation.\nTenureRatio\nCalculates: YearsInCurrentRole / YearsAtCompany\nIdentify fast or slow transitions. High ratios may indicate stagnation, while low ratios may indicate fast promotions or instability.\nZeroCompanyTenureFlag\nBinary flag indicating YearsAtCompany == 0\nCaptures newly joined employees who may behave differently.\nNewJoinerFlag\nFlags employees with: - YearsAtCompany &lt; 2\n- TotalWorkingYears &gt; 3\nThese are experienced employees that recently joined - a group that may behave differently due to habits or philosophies from previous jobs.\n\nRole and work features\n\nOvertime_JobLevel\nInteraction between OverTime and JobLevel\nUseful for identifying levels of staff that are potentially overworked.\nTravel_Occupation\nCombined effect of travel frequency and job role.\nIdentify roles with high levels of travel which correlates with elevated attrition risk.\n\nSatisfaction features\n\nSatisfactionMean\nAverages the satisfaction scores:\n- EnvironmentSatisfaction\n- JobSatisfaction\n- RelationshipSatisfaction\nProvides a general overview of employee sentiment.\nSatisfactionRange\nCalculates range of the 3 satisfaction scores\nInconsistency in perceived satisfaction, potentially indicating internal conflict or instability.\nSatisfactionStability\nBinary flag: 1 if all 3 satisfaction scores are equal\nIdentifies employees with consistent satisfaction levels across all domains.\n\nFinancial features\n\nLog_MonthlyIncome\nApplies log transform to MonthlyIncome\nReduce skew and compress extreme values.\nLog_DistanceFromHome\nApplies log transform to DistanceFromHome\nReduce skew and compress extreme values.\nLowIncomeFlag\nBinary flag for employees earning below the 25th percentile of income\nCaptures possible financial dissatisfaction.\n\nBurnout risk\n\nStressRisk\nBinary flag for employees where:\n- OverTime == Yes\n- JobSatisfaction ≤ 2\n- SatisfactionMean &lt; 2.5\nCombines workload and dissatisfaction into a high-risk signal for possible voluntary attrition."
+  },
+  {
+    "objectID": "notebooks/02_preprocessing.html#preprocessing-pipeline-definition",
+    "href": "notebooks/02_preprocessing.html#preprocessing-pipeline-definition",
+    "title": "Preprocessing",
+    "section": "Preprocessing pipeline definition",
+    "text": "Preprocessing pipeline definition\nWe finalize the preprocessing logic here by defining which columns to encode, scale, or pass through unchanged:\n\nCategorical variables are one-hot encoded.\nContinuous numeric features are standardized with StandardScaler.\nBinary flags from feature engineering are passed through untouched.\nAll transformations are bundled into a ColumnTransformer, which is embedded in a reusable Pipeline.\n\nThis pipeline will be saved and applied during modeling (03_modeling.ipynb) to ensure consistent preprocessing and no data leakage.\n\n\nIndex(['Age', 'Attrition', 'BusinessTravel', 'DailyRate', 'Department',\n       'DistanceFromHome', 'Education', 'EducationField',\n       'EnvironmentSatisfaction', 'Gender', 'HourlyRate', 'JobInvolvement',\n       'JobLevel', 'JobRole', 'JobSatisfaction', 'MaritalStatus',\n       'MonthlyIncome', 'MonthlyRate', 'NumCompaniesWorked', 'OverTime',\n       'PercentSalaryHike', 'PerformanceRating', 'RelationshipSatisfaction',\n       'StockOptionLevel', 'TotalWorkingYears', 'TrainingTimesLastYear',\n       'WorkLifeBalance', 'YearsAtCompany', 'YearsInCurrentRole',\n       'YearsSinceLastPromotion', 'YearsWithCurrManager'],\n      dtype='object')"
+  },
+  {
+    "objectID": "notebooks/02_preprocessing.html#export-pipeline",
+    "href": "notebooks/02_preprocessing.html#export-pipeline",
+    "title": "Preprocessing",
+    "section": "Export pipeline",
+    "text": "Export pipeline\nWe export the preprocessing pipeline unfitted here, so that we can fit in the next notebook on only the training set.\n\n\nIndex(['Age', 'BusinessTravel', 'DailyRate', 'Department', 'DistanceFromHome',\n       'Education', 'EducationField', 'EnvironmentSatisfaction', 'Gender',\n       'HourlyRate', 'JobInvolvement', 'JobLevel', 'JobRole',\n       'JobSatisfaction', 'MaritalStatus', 'MonthlyIncome', 'MonthlyRate',\n       'NumCompaniesWorked', 'OverTime', 'PercentSalaryHike',\n       'PerformanceRating', 'RelationshipSatisfaction', 'StockOptionLevel',\n       'TotalWorkingYears', 'TrainingTimesLastYear', 'WorkLifeBalance',\n       'YearsAtCompany', 'YearsInCurrentRole', 'YearsSinceLastPromotion',\n       'YearsWithCurrManager'],\n      dtype='object')\nPreprocessing pipeline saved."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Project Overview",
+    "section": "",
+    "text": "This project applies interpretable machine learning techniques to predict employee attrition using logistic regression, with a focus on transparency and stakeholder communication. Both global and local model explanations are included, leveraging model coefficients and SHAP values.\n\n\n\nPredict which employees are at risk of leaving the company and understand why, using:\n\nLogistic Regression for interpretability.\nSHAP Values for individualized explanations and global patterns.\nA structured, end-to-end ML pipeline with preprocessing and evaluation.\n\n\n\n\n\nLogistic regression provides a direct mapping between feature values and their contribution to the log-odds of attrition.\n\nPositive coefficients increase attrition risk.\nNegative coefficients reduce it.\n\n\n\n\nStrongest Positive Predictors:\nEducationField_Technical Degree, JobRole_Research Scientist, and BusinessTravel_Non-Travel.\nStrongest Negative Predictors:\nJobRole_Healthcare Representative, JobRole_Manager, and BusinessTravel_Travel_Rarely.\nMinimal Impact Features:\nFeatures like Gender, Education, and JobRole_Human Resources showed negligible coefficient values.\n\n\n\n\n\n\n\n\n\nSHAP values explain predictions on a per-observation basis and provide model-agnostic insights.\n\nEach dot shows how a feature contributed to an individual prediction.\nColor indicates feature value (blue = low, red = high).\nHorizontal position reflects direction/magnitude of influence.\n\n\n\n\nMost Influential Features:\nNumCompaniesWorked, TotalWorkingYears, YearsWithCurrManager, and EnvironmentSatisfaction.\nContrast With Coefficients:\nSome features with low coefficients (e.g. NumCompaniesWorked) had high SHAP impact—emphasizing their interaction effects or conditional relevance.\n\n\n\n\n\n\n\n\n\n\n\n\n\nCoefficients tell us how the model is built.\nSHAP tells us how the model behaves.\nTogether, they give a full picture: the “rules” (coefficients) and the “realities” (SHAP).\n\nThis project demonstrates the value of combining linear interpretability with model-agnostic explanation tools to surface actionable insights in HR analytics.\n\n\n\n\n.\n├── data/\n│   ├── raw/\n│   └── processed/\n├── models/\n│   └── final_model_pipeline.pkl\n├── notebooks/\n│   ├── 01_eda.ipynb\n│   ├── 02_preprocessing.ipynb\n│   ├── 03_modeling.ipynb\n│   ├── 04_explainability.ipynb\n│   └── 05_final_report.ipynb\n└── README.md\n\n\n\n\n\nAdd SHAP-based cohort profiling for team-level analysis.\nImplement visual dashboards using Streamlit or Tableau.\nExtend analysis with Random Forest or XGBoost for performance benchmarking."
+  },
+  {
+    "objectID": "index.html#objective",
+    "href": "index.html#objective",
+    "title": "Project Overview",
+    "section": "",
+    "text": "Predict which employees are at risk of leaving the company and understand why, using:\n\nLogistic Regression for interpretability.\nSHAP Values for individualized explanations and global patterns.\nA structured, end-to-end ML pipeline with preprocessing and evaluation."
+  },
+  {
+    "objectID": "index.html#logistic-regression-coefficients-global-explainability",
+    "href": "index.html#logistic-regression-coefficients-global-explainability",
+    "title": "Project Overview",
+    "section": "",
+    "text": "Logistic regression provides a direct mapping between feature values and their contribution to the log-odds of attrition.\n\nPositive coefficients increase attrition risk.\nNegative coefficients reduce it.\n\n\n\n\nStrongest Positive Predictors:\nEducationField_Technical Degree, JobRole_Research Scientist, and BusinessTravel_Non-Travel.\nStrongest Negative Predictors:\nJobRole_Healthcare Representative, JobRole_Manager, and BusinessTravel_Travel_Rarely.\nMinimal Impact Features:\nFeatures like Gender, Education, and JobRole_Human Resources showed negligible coefficient values."
+  },
+  {
+    "objectID": "index.html#shap-value-interpretation-global-local-explainability",
+    "href": "index.html#shap-value-interpretation-global-local-explainability",
+    "title": "Project Overview",
+    "section": "",
+    "text": "SHAP values explain predictions on a per-observation basis and provide model-agnostic insights.\n\nEach dot shows how a feature contributed to an individual prediction.\nColor indicates feature value (blue = low, red = high).\nHorizontal position reflects direction/magnitude of influence.\n\n\n\n\nMost Influential Features:\nNumCompaniesWorked, TotalWorkingYears, YearsWithCurrManager, and EnvironmentSatisfaction.\nContrast With Coefficients:\nSome features with low coefficients (e.g. NumCompaniesWorked) had high SHAP impact—emphasizing their interaction effects or conditional relevance."
+  },
+  {
+    "objectID": "index.html#final-thoughts",
+    "href": "index.html#final-thoughts",
+    "title": "Project Overview",
+    "section": "",
+    "text": "Coefficients tell us how the model is built.\nSHAP tells us how the model behaves.\nTogether, they give a full picture: the “rules” (coefficients) and the “realities” (SHAP).\n\nThis project demonstrates the value of combining linear interpretability with model-agnostic explanation tools to surface actionable insights in HR analytics."
+  },
+  {
+    "objectID": "index.html#repository-structure",
+    "href": "index.html#repository-structure",
+    "title": "Project Overview",
+    "section": "",
+    "text": ".\n├── data/\n│   ├── raw/\n│   └── processed/\n├── models/\n│   └── final_model_pipeline.pkl\n├── notebooks/\n│   ├── 01_eda.ipynb\n│   ├── 02_preprocessing.ipynb\n│   ├── 03_modeling.ipynb\n│   ├── 04_explainability.ipynb\n│   └── 05_final_report.ipynb\n└── README.md"
+  },
+  {
+    "objectID": "index.html#next-steps",
+    "href": "index.html#next-steps",
+    "title": "Project Overview",
+    "section": "",
+    "text": "Add SHAP-based cohort profiling for team-level analysis.\nImplement visual dashboards using Streamlit or Tableau.\nExtend analysis with Random Forest or XGBoost for performance benchmarking."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#overview",
+    "href": "notebooks/01_eda.html#overview",
+    "title": "Exploratory Data Analysis",
+    "section": "Overview",
+    "text": "Overview\nTo begin our project, this notebook performs an exploratory analysis of the IBM HR Analytics Employee Attrition dataset. We investigate the factors that lead to attrition, which represents employees leaving the company (either voluntarily or involuntarily). - The overall goal is not only to build a predictive model for the target Attrition, but to discover specific changes the business could make to reduce it. - Attrition poses a significant cost to organizations through lost productivity, rehiring expenses, and weakened team morale. If there are ways to help prevent"
+  },
+  {
+    "objectID": "notebooks/01_eda.html#notebook-outline",
+    "href": "notebooks/01_eda.html#notebook-outline",
+    "title": "Exploratory Data Analysis",
+    "section": "Notebook Outline",
+    "text": "Notebook Outline\n\nLoad and validate data\n\nInitial data summary\n\nUnivariate analysis\n\nAffect on attrition\n\nFeature Correlation"
+  },
+  {
+    "objectID": "notebooks/01_eda.html#column-validation",
+    "href": "notebooks/01_eda.html#column-validation",
+    "title": "Exploratory Data Analysis",
+    "section": "Column validation",
+    "text": "Column validation\n\nAll expected columns are confirmed to be present and are correctly named (no spaces, misspellings, etc.).\n\n\n\nColumn check passed: All expected columns are present."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#drop-non-informative-columns",
+    "href": "notebooks/01_eda.html#drop-non-informative-columns",
+    "title": "Exploratory Data Analysis",
+    "section": "Drop non-informative columns",
+    "text": "Drop non-informative columns\n\nColumns that do not provide meaningful information are removed:\n\nEmployeeNumber, EmployeeCount, Over18, StandardHours\n\nRemoving these columns at this early stage simplifies the dataset and prevents them from accidentally influencing the data analysis or model.\n\n\n\nDropped columns: ['EmployeeCount', 'Over18', 'StandardHours', 'EmployeeNumber']\nNew shape: (1470, 31)"
+  },
+  {
+    "objectID": "notebooks/01_eda.html#export-dataset-with-dropped-columns",
+    "href": "notebooks/01_eda.html#export-dataset-with-dropped-columns",
+    "title": "Exploratory Data Analysis",
+    "section": "Export dataset with dropped columns",
+    "text": "Export dataset with dropped columns\n\nSince no further changes will be made in this exploratory notebook, we export the dataset that reflects the dropped columns for use in the next notebook (as data_01.csv).\n\n\n\nData successfully exported to '../data/processed/data_01.csv'"
+  },
+  {
+    "objectID": "notebooks/01_eda.html#target-variable-distribution-attrition",
+    "href": "notebooks/01_eda.html#target-variable-distribution-attrition",
+    "title": "Exploratory Data Analysis",
+    "section": "Target variable distribution: Attrition",
+    "text": "Target variable distribution: Attrition\n\n83.88% of employees stayed (Attrition = No)\n16.12% of employees left (Attrition = Yes)\nThere is a significant class imbalance - the majority class (non-attrition) dominates the dataset. This can lead to true positives (predicted and actual Attrition = Yes instances) being ignored by the model.\nTo mitigate this, we’ll use the class_weight='balanced' parameter in models like logistic regression, which adjusts the loss function to penalize misclassifying the minority class more heavily.\nAlso, we will use a technique called SMOTE, which oversamples the minority class in a way that does not alter the nature of the data.\n\n\n\n\n\n\n\n\n\n\nCount\nPercentage\n\n\nAttrition\n\n\n\n\n\n\nNo\n1233\n83.88\n\n\nYes\n237\n16.12"
+  },
+  {
+    "objectID": "notebooks/01_eda.html#numeric-features",
+    "href": "notebooks/01_eda.html#numeric-features",
+    "title": "Exploratory Data Analysis",
+    "section": "Numeric features",
+    "text": "Numeric features\n\nRight-skewed distributions are observed in MonthlyIncome, TotalWorkingYears, YearsAtCompany, and DistanceFromHome. These may benefit from log transformation to reduce the influence of extreme values.\nDistributions for ordinal features like Education, JobLevel, JobInvolvement, and the various satisfaction scores are clustered around a few discrete integer values.\n\nThese represent categorical levels encoded as integers and can be left unscaled.\n\nVariables such as YearsSinceLastPromotion, YearsWithCurrManager, and NumCompaniesWorked show strong peaks at zero, capturing employees with little prior experience or recent role changes.\n\nThese may have nonlinear effects on attrition:\n\nFor example, the risk of attrition might stay flat for several years, then spike suddenly after a long period without promotion or job change.\n\n\nSalary-related variables (HourlyRate, DailyRate, MonthlyRate, MonthlyIncome) have varying scales, which can be more easily compared by standardizing their values.\n\n\nDemographics\n\nAge shows a slightly right-skewed distribution, with most employees between 30 and 40 years old.\nDistanceFromHome is heavily right-skewed, indicating that most employees live within 10 km (~ 6.2 miles) of the workplace.\nEducation is a categorical feature peaking at level 3, with level 5 describing the lowest number of employees.\n\nThese features may relate to attrition through commute stress, career stage, or not being properly qualified for the position.\n\n\n\n\n\n\n\n\n\n\n\nCompensation\n\nNote: Although StockOptionLevel is an ordinal categorical variable representing discrete levels (0–3), we treat it as numerical here purely for the purpose of visualizing its distribution. For modeling, it should be treated as a categorical feature to avoid implying linear relationships between the levels.\n\n\nHourlyRate, DailyRate, and MonthlyRate appear uniformly distributed, suggesting limited variability and therefore limited predictive value for modeling.\nMonthlyIncome is right-skewed with a long tail and several high outliers, indicating a wide income disparity among employees.\nPercentSalaryHike is moderately skewed right, with most employees receiving raises between 11% and 15%.\nStockOptionLevel is heavily concentrated at 0 and 1, with relatively few employees receiving higher stock options.\nJobLevel is concentrated at levels 1 and 2, implying that most employees are at the lower rungs of the organizational hierarchy.\nPerformanceRating is almost entirely at level 3, perhaps due to a lack of variation in evaluations.\n\nWhile most compensation variables are evenly spread, actual monthly income, percent salary hikes, and stock option levels show more variation — which may reflect underlying compensation policies for organizational rank (JobLevel) and/or performance-based incentives (PerformanceRating).\n\n\n\n\n\n\n\n\n\n\n\nSatisfaction and engagement\n\nEnvironmentSatisfaction, JobSatisfaction, and RelationshipSatisfaction all have their largest counts at levels 3 and 4, suggesting most employees report moderate to high satisfaction. However, there are also a significant number of instances for the lower two levels for these features, which are possible areas of potential improvement.\n\nRelationshipSatisfaction most likely refers to personal relationships (spouse or partner), not interpersonal relationships between employees, although this isn’t specified for the dataset.\n\nJobInvolvement and WorkLifeBalance are heavily concentrated at level 3, indicating a generally engaged workforce with a healthy work-life balance, although the number of those reporting levels 1 and 2 is lower but significant.\n\nAccording to the data, most employees feel moderately satisfied and involved, but there is some room for improvement to target the strong minority who report lower levels of these metrics.\n\n\n\n\n\n\n\n\n\n\n\nTenure and career\n\nTotalWorkingYears, YearsAtCompany, and YearsInCurrentRole display long right tails, indicating a small group of highly tenured individuals.\n\nThere is a curious spike at ~ 7.5 years for YearsInCurrentRole - perhaps this represents a group that is ripe for a promotion.\n\nTrainingTimesLastYear shows distinct spikes, most commonly at 2–3 training sessions.\nYearsSinceLastPromotion shows mostly recent promotions, though some employees have not been promoted for over a decade.\nYearsWithCurrManager shows clustering at low values (around ~ 0 and ~ 2.0), suggesting frequent managerial changes.\n\nThis distribution is very similar to YearsInCurrentRole (showing a similar spike around 7.5 years), pointing out a subset of employees experiencing career stagnation.\n\nNumCompaniesWorked also has a right-skewed distribution, with many employees having worked at one or two companies, and fewer with broader external experience.\n\nThese patterns point to a predominantly early-career workforce with frequent recent promotions and high managerial turnover, though a minority of employees remain in the same roles or under the same managers for extended periods."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#categorical-features",
+    "href": "notebooks/01_eda.html#categorical-features",
+    "title": "Exploratory Data Analysis",
+    "section": "Categorical features",
+    "text": "Categorical features\n\nRole and department\n\nDepartment is dominated by employees in Research & Development, followed by Sales, with very few in Human Resources.\nJobRole shows that most employees have the titles Sales Executive, Research Scientist, and Laboratory Technician, while there is a lower representation for director or manager-level roles (as one would expect).\n\nThe disproportionately high number of Sales Executives relative to Sales Representatives may reflect either inflated titling practices or a focus on high-value client relationships over mass lead generation from an abundance of lower-rung employees (cold calling, mass emails, etc.).\n\nSuprisingly, EducationField is concentrated in Life Sciences and Medical, with other fields such as Marketing and Technical Degree trailing behind.\n\nWhile IBM is not typically associated with large medical or life sciences teams, this dataset is synthetic and intended for modeling purposes, so the high representation of these education fields likely reflects simulated variety rather than the company’s actual workforce.\n\n\nOverall, the workforce is concentrated in research and sales functions, with a high representation of life sciences and medical educational backgrounds — suggesting the dataset simulates a company involved in scientific or healthcare-related analytics, despite being labeled as IBM.\n\n\n\n\n\n\n\n\n\n\n\nDemographics\n\nGender shows a roughly 60/40 split between male and female.\nMaritalStatus shows that a majority of employees are married, followed by single and divorced individuals.\n\nThe higher proportion of married employees may correlate with longer tenure (perhaps because of having children).\n\n\n\n\n\n\n\n\n\n\n\n\n\nWork pattern\n\nBusinessTravel: Most employees either travel rarely for business or not at all. Very few travel frequently.\nOverTime: The majority of employees do not work overtime, though a substantial minority does.\n\nThe minority of employees who frequently travel or work overtime may suffer from burnout that leads to attrition."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#numeric-features-vs-attrition",
+    "href": "notebooks/01_eda.html#numeric-features-vs-attrition",
+    "title": "Exploratory Data Analysis",
+    "section": "Numeric features vs Attrition",
+    "text": "Numeric features vs Attrition\n\nDemographics\n\nAge: Employees who left the company skew younger, with a noticeable peak in the late 20s – early 30s range. Those who stayed are more evenly distributed across older age groups, suggesting that younger employees may be more prone to leave.\nDistanceFromHome: There’s a wider spread for employees who left, indicating that longer commutes might correlate with higher attrition risk.\nEducation: Distributions are similar across both groups, implying that education level likely has minimal impact on attrition.\n\nOverall, Age and DistanceFromHome may be useful predictors, while Education appears less relevant.\n\n\n\n\n\n\n\n\n\n\n\nCompensation\nOverall, the plots suggest that compensation structure — especially total monthly income and long-term incentives like stock options — may play a meaningful role in employee attrition risk.\n\nNote: Although StockOptionLevel is an ordinal categorical variable representing discrete levels (0–3), we treat it as numerical here purely for the purpose of visualizing its distribution. For modeling, it should be treated as a categorical feature to avoid implying linear relationships between the levels.\n\n\nMonthlyIncome, DailyRate: Employees who stayed tend to have higher and more widely distributed incomes. Those who left cluster more tightly around lower income levels.\n\nThis may indicate that employees with lower salaries are more likely to leave, which is expected.\n\nPercentSalaryHike: There is a subtle difference where retained employees received slightly more frequent or higher salary hikes.\n\nAlthough the difference is modest, a small cumulative effect over time might influence retention.\n\nStockOptionLevel: Employees who stayed had slightly more presence at higher stock option levels.\n\nThis may reflect better long-term incentives provided to retained employees, suggesting stock options could act as a retention booster.\n\nOther compensation variables like HourlyRate, and MonthlyRate do not show strong separation, suggesting they may be less influential or redundant with MonthlyIncome.\n\n\n\n\n\n\n\n\n\n\n\n\nTenure and career\nThese patterns suggest that attrition is more common among employees with shorter tenure, fewer internal promotions, and more prior employers.\n\nTotalWorkingYears, YearsAtCompany, YearsInCurrentRole, and YearsWithCurrManager are all lower on average for those who left, indicating that shorter tenures are associated with higher attrition risk. This may reflect a lack of long-term engagement or low satisfaction early in term of employment.\nYearsSinceLastPromotion shows minimal difference between attrition groups, indicating that promotion timing alone may not be a significant driver of employee turnover.\nNumCompaniesWorked: while employees who left include a more instances indicating many prior employers (indicated by the fatter tail towards higher values), their median NumCompaniesWorked is lower than that of those who stayed, suggesting that attrition may also be common among employees with limited prior experience.\nTrainingTimesLastYear: Employees who left tend to receive slightly less training than those who stayed, with fewer individuals receiving 3 or more sessions. This may reflect a subtle link between lower development investment and attrition risk.\n\n\n\n\n\n\n\n\n\n\n\n\nSatisfaction and engagement\nWhile not all variables show strong separation, JobSatisfaction, EnvironmentSatisfaction, WorkLifeBalance, and JobLevel stand out as having visually apparent associations with attrition.\n\nNOTE: While most features shown are ordinal categorical (JobSatisfaction, WorkLifeBalance, etc), they are treated here as quasi-continuous solely to aid visual exploration of distributions.\n\n\nEnvironmentSatisfaction: Employees who stayed tend to report higher environmental satisfaction compared to those who left.\nJobInvolvement: Difference is minimal.\nJobLevel: Attrition appears more common among employees at lower job levels (especially level 1), while those in higher positions tend to stay.\nJobSatisfaction: A higher proportion of employees with low satisfaction left the company, indicating a clear link between job satisfaction and attrition.\nPerformanceRating: This feature appears largely uniform across attrition groups.\nRelationshipSatisfaction: Employees with lower relationship satisfaction scores are slightly more represented among those who left.\nWorkLifeBalance: Attrition is more concentrated among employees who rated their work-life balance poorly (level 1 or 2)."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#categorical-features-vs-attrition",
+    "href": "notebooks/01_eda.html#categorical-features-vs-attrition",
+    "title": "Exploratory Data Analysis",
+    "section": "Categorical features vs Attrition",
+    "text": "Categorical features vs Attrition\n\nRole and department breakdown\n\nDepartment\n\nAttrition is highest in Sales and Human Resources, suggesting these departments may involve higher stress or lower engagement, while Research & Development shows stronger retention, likely due to more specialized, stable roles.\n\nJob role\n\nSales Representatives and Lab Technicians face the steepest attrition, highlighting a potential need for better support or career development in high-turnover roles, whereas leadership and research positions demonstrate strong retention.\n\nEducation\n\nAttrition is higher among employees with backgrounds in Human Resources, Marketing, and Technical Degrees, which may reflect dissatisfaction within those roles, while fields like Life Sciences and Medical show stronger retention, possibly due to better support from the organization and alignment of education and job expectations.\n\n\n\n\n\n\n\n\n\n\n\n\n\nDemographics\n\nGender shows little predictive value, with similar attrition rates across males and females.\nMaritalStatus, however, reveals that single employees are significantly more likely to leave, perhaps reflecting differences in financial stability or lifestyle priorities (such as having children).\n\n\n\n\n\n\n\n\n\n\n\n\nWork pattern and attrition\n\nBusinessTravel: Employees who travel frequently show significantly higher attrition rates. Those who travel rarely have lower rates, and non-travel employees show the lowest rate. There is a clear positive relationship between the amount of travel and attrition rate.\nOverTime: There is a huge increase in attrition among employees who work overtime, reinforcing the idea that excessive workload contributes to dissatisfaction and departure.\nJobLevel: Generally, attrition decreases as job level increases. Entry-level employees (JobLevel = 1) show the highest attrition, while mid to senior levels (3–5) show better retention. There is a rise in attrition at job level 3 which slightly disrupts this trend, warranting further investigation of the specific conditions of employment at this level.\nStockOptionLevel: Employees with no stock options (0) have the highest attrition. Those with stock options at levels 1 to 3 show lower attrition, suggesting that equity incentives may help with retention. Notably, StockOptionLevel 3 has worse retention than levels 1 and 2.\n\nEmployees with heavy travel or overtime demands face much higher attrition - a possible reflection of poor work-life balance. Lower job levels and minimal stock options are also linked to higher attrition, suggesting that advancement and long-term incentives play a key role in retention."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#correlation-heatmap",
+    "href": "notebooks/01_eda.html#correlation-heatmap",
+    "title": "Exploratory Data Analysis",
+    "section": "Correlation heatmap",
+    "text": "Correlation heatmap\nCompensation and tenure metrics tend to move together, while satisfaction, training, and rate features operate more independently.\n\nJobLevel, MonthlyIncome, and TotalWorkingYears are tightly correlated, reflecting growth with seniority.\nTenure metrics like YearsAtCompany, YearsSinceLastPromotion, and YearsWithCurrManager also show strong internal alignment.\nPerformanceRating and PercentSalaryHike are moderately linked, hinting at structured raise policies.\nMost satisfaction and rate-based pay features (DailyRate, HourlyRate) show low correlation with other metrics.\nNegative correlations are rare, such as between NumCompaniesWorked and YearsWithCurrManager."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#correlation-pairs",
+    "href": "notebooks/01_eda.html#correlation-pairs",
+    "title": "Exploratory Data Analysis",
+    "section": "Correlation pairs",
+    "text": "Correlation pairs\n\nStrong correlations between JobLevel, MonthlyIncome, and TotalWorkingYears reflect a predictable hierarchy: tenure drives advancement, which drives pay.\n\nSimilarly, YearsAtCompany, YearsInCurrentRole, and YearsWithCurrManager are linked, capturing overlapping aspects of employee longevity.\nThe pairing of PercentSalaryHike and PerformanceRating suggests a structured, performance-tied raise system—potentially redundant in modeling.\n\n\n\nHighly correlated numeric feature pairs (|corr| &gt; 0.7):\n\n\n\n\n\n\n\n\n\nFeature 1\nFeature 2\nCorrelation\nAbsCorr\n\n\n\n\n134\nJobLevel\nMonthlyIncome\n0.950300\n0.950300\n\n\n141\nJobLevel\nTotalWorkingYears\n0.782208\n0.782208\n\n\n198\nPercentSalaryHike\nPerformanceRating\n0.773550\n0.773550\n\n\n168\nMonthlyIncome\nTotalWorkingYears\n0.772893\n0.772893\n\n\n249\nYearsAtCompany\nYearsWithCurrManager\n0.769212\n0.769212\n\n\n247\nYearsAtCompany\nYearsInCurrentRole\n0.758754\n0.758754\n\n\n251\nYearsInCurrentRole\nYearsWithCurrManager\n0.714365\n0.714365"
+  },
+  {
+    "objectID": "notebooks/01_eda.html#key-insights-from-eda",
+    "href": "notebooks/01_eda.html#key-insights-from-eda",
+    "title": "Exploratory Data Analysis",
+    "section": "Key Insights from EDA:",
+    "text": "Key Insights from EDA:\n\nTarget imbalance:\n\nOnly ~16% of employees in the dataset have Attrition = Yes, indicating significant class imbalance. Future modeling should use metrics like ROC-AUC or recall instead of just accuracy.\n\nStrong predictors identified:\n\nEmployees who work OverTime are nearly 3× more likely to leave.\nLow JobSatisfaction, shorter tenure (YearsAtCompany), and low WorkLifeBalance are also associated with higher attrition.\nYounger employees, low income, those with a longer commute (DistanceFromHome) and those in certain JobRoles (Sales, Laboratory Technician, …) appear to be more likely to leave.\n\nFeature quality:\n\nNo missing values or duplicates detected.\nAll columns passed structure validation.\nEmployeeCount, StandardHours, and Over18 show no variance and were dropped, along with the identifying column.\nNo negative or illogical values in numeric fields.\n\nCorrelation observations:\n\nStrong correlations cluster around compensation and tenure.\nSatisfaction, engagement, and location-related variables remain largely independent, offering distinct, potentially valuable signals for modeling attrition."
+  },
+  {
+    "objectID": "notebooks/01_eda.html#next-steps",
+    "href": "notebooks/01_eda.html#next-steps",
+    "title": "Exploratory Data Analysis",
+    "section": "Next Steps:",
+    "text": "Next Steps:\n\nEncode categorical variables appropriately for modeling.\nScale numeric features if using distance-based or linear models.\nStratify training/test split to preserve class imbalance.\nPrepare data for model interpretability.\n\nThe dataset appears clean and predictive, with several features that are both statistically and intuitively linked to attrition."
+  },
+  {
+    "objectID": "notebooks/03_modeling.html#notebook-overview",
+    "href": "notebooks/03_modeling.html#notebook-overview",
+    "title": "Modeling",
+    "section": "Notebook overview",
+    "text": "Notebook overview\nWe now arrive at the modeling step, using logistic regression for this classification task.\nAll preprocessing is done in a pipeline (defined in the previous notebook and custom class in /src) for consistency and readability.\nA 60/20/20 train/validation/test split enables hyperparameter and threshold tuning while preserving a holdout test set.\nLogistic regression was chosen for its interpretability. To give the model the best chance at predicting the minority class accurately, the training set is SMOTE-resampled.\nFinal evaluation uses the threshold that yields the best F1 score (0.79) to assess generalization.\nValidation Set (Threshold = 0.79): - ROC AUC: 0.827 | Accuracy: 0.874 - Precision: 0.632 | Recall: 0.511 | F1 Score: 0.565\nTest Set (Threshold = 0.79): - ROC AUC: 0.808 | Accuracy: 0.861 - Precision: 0.571 | Recall: 0.511 | F1 Score: 0.539\nOverall, results are consistent across sets, indicating strong generalization. The threshold favors confident positive predictions (given the high precision coupled with the high threshold), making the model well-suited for risk-sensitive HR decisions. Coefficient interpretation follows in the next notebook."
+  },
+  {
+    "objectID": "notebooks/03_modeling.html#notebook-outline",
+    "href": "notebooks/03_modeling.html#notebook-outline",
+    "title": "Modeling",
+    "section": "Notebook outline",
+    "text": "Notebook outline\n\nLoad dataset and preprocessing pipeline\n\nCross-validation evaluation\n\nThreshold tuning\n\nGeneralizability\n\nSummary and exports"
+  },
+  {
+    "objectID": "notebooks/05_final_report.html",
+    "href": "notebooks/05_final_report.html",
+    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "section": "",
+    "text": "This report presents the final results and business interpretation of a predictive modeling project to identify employees at risk of leaving the company. The objective was to create an accurate and explainable classification model using the IBM HR Analytics dataset.\nKey techniques: - Custom feature engineering - Cross-validated model selection - Threshold optimization - SHAP and LIME explainability"
+  },
+  {
+    "objectID": "notebooks/05_final_report.html#project-overview",
+    "href": "notebooks/05_final_report.html#project-overview",
+    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "section": "",
+    "text": "This report presents the final results and business interpretation of a predictive modeling project to identify employees at risk of leaving the company. The objective was to create an accurate and explainable classification model using the IBM HR Analytics dataset.\nKey techniques: - Custom feature engineering - Cross-validated model selection - Threshold optimization - SHAP and LIME explainability"
+  },
+  {
+    "objectID": "notebooks/05_final_report.html#summary-of-modeling-pipeline",
+    "href": "notebooks/05_final_report.html#summary-of-modeling-pipeline",
+    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "section": "2. Summary of Modeling Pipeline",
+    "text": "2. Summary of Modeling Pipeline\nThe model used in this report is the best-performing classifier identified during the 03_modeling.ipynb phase. The pipeline includes: - Preprocessing (encoding, scaling, feature engineering) - Classification using [INSERT MODEL NAME, e.g., CatBoostClassifier] - Threshold tuning based on validation AUC and F1 score\nThe model and the optimal threshold were saved and loaded here for final evaluation.\n\n\n\nEvaluation at Optimal Threshold (0.72)\nAccuracy: 0.850\nPrecision: 0.533\nRecall: 0.511\nF1 Score: 0.522\nROC AUC: 0.779"
+  },
+  {
+    "objectID": "notebooks/05_final_report.html#interpretability-summary",
+    "href": "notebooks/05_final_report.html#interpretability-summary",
+    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "section": "4. Interpretability Summary",
+    "text": "4. Interpretability Summary\nWe use SHAP and to explain model predictions and provide decision transparency.\n\nGlobal explanations (SHAP summary plot) identify which features most influence predictions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic Regression Coefficients\nLogistic regression provides a direct mapping between each feature and the model’s predicted log-odds of attrition. Positive coefficients increase the odds of attrition; negative coefficients reduce it.\nIn this case: - Features like OverTime_Yes, LowIncomeFlag, and StressRisk have strong positive coefficients, meaning they increase attrition risk. - Features such as SatisfactionStability and YearsCompany_Satisfaction have negative coefficients, indicating they reduce attrition risk. - The model intercept is {:.2f}, representing the baseline log-odds when all features are zero (which is mostly theoretical in this context).\nThese coefficients align closely with SHAP results, validating both the feature importance rankings and the directionality of their impact.\n\n\n✅ Final feature name count: 48"
+  },
+  {
+    "objectID": "notebooks/05_final_report.html#interpretation-of-logistic-regression-coefficients-and-shap-values",
+    "href": "notebooks/05_final_report.html#interpretation-of-logistic-regression-coefficients-and-shap-values",
+    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "section": "Interpretation of Logistic Regression Coefficients and SHAP Values",
+    "text": "Interpretation of Logistic Regression Coefficients and SHAP Values\nThis section combines two complementary methods—logistic regression coefficients and SHAP values—to explain model behavior and feature influence on employee attrition.\n\nLogistic Regression Coefficients\nLogistic regression provides a direct mapping between each feature and the model’s predicted log-odds of attrition. Coefficients are expressed in log-odds units:\n\nPositive coefficients increase the log-odds of attrition (higher likelihood of leaving).\nNegative coefficients decrease the log-odds of attrition (lower likelihood of leaving).\n\n\nTop Positive Predictors (Higher Attrition Risk)\nThe strongest positively associated predictors of attrition are:\n\nEducationField_Technical Degree and JobRole_Research Scientist: Employees in these categories are substantially more likely to leave.\nBusinessTravel_Non-Travel and JobRole_Healthcare Representative: Indicate an inverse correlation with job stability—possibly due to feelings of stagnation or limited exposure to opportunities.\nOther notable contributions include BusinessTravel_Travel_Frequently, JobRole_Research Director, and JobRole_Manager.\n\nThese features suggest attrition patterns linked to job role fit and education backgrounds, possibly due to unmet expectations or better external opportunities.\n\n\nTop Negative Predictors (Lower Attrition Risk)\nNegatively weighted predictors include:\n\nJobRole_Human Resources, JobRole_Manufacturing Director, and JobRole_Sales Executive: These roles may offer more stability, fulfillment, or better retention strategies.\nJobLevel, EnvironmentSatisfaction, WorkLifeBalance, and PerformanceRating: Indicate more engaged employees and those receiving better benefits or ratings are less likely to leave.\nOverTime_No, DistanceFromHome, and MonthlyIncome: Suggest improved work-life balance and retention.\nMaritalStatus_Single and BusinessTravel_Rarely: Slight negative effects, possibly indicating resilience or lesser burden from commuting in some contexts.\n\n\n\nMinimal Impact or Ambiguous Features\nSeveral features cluster around a coefficient near 0, indicating negligible direct influence:\n\nEducation, Age, and HourlyRate: These features do not strongly signal attrition in this dataset once other features are accounted for.\nGender_Female and Gender_Male: Suggest gender neutrality in attrition risk.\nEducationField_Marketing, JobRole_Laboratory Technician, and MonthlyRate: Likely minimal effects.\n\nThe model intercept is approximately -1.85, indicating that in the absence of any features (i.e., all coefficients = 0), the baseline log-odds of attrition are negative—translating to a low base probability of attrition in the general employee population.\n\n\n\n\nSHAP Value Interpretation\nSHAP values explain model predictions on a per-observation level. Each value shows the contribution of a feature to the final prediction:\n\nSHAP plots reflect average impact across all records, capturing feature interactions and value distributions.\nUnlike logistic coefficients, SHAP does not separate dummy variables but aggregates by original features (e.g., JobRole, BusinessTravel).\n\n\nUnique SHAP Insights\n\nFeatures such as NumCompaniesWorked, TotalWorkingYears, YearsWithCurrManager, and EnvironmentSatisfaction rank highly by SHAP impact, even if their logistic coefficients are small.\nSHAP surfaces how often and how significantly each feature shifts the prediction toward or away from attrition.\nSHAP values are especially useful for model auditing, fairness checks, and explaining individual predictions.\n\n\n\n\n\nFinal Thoughts\nThis analysis highlights the value of combining both techniques:\n\nLogistic regression provides directionality, transparency, and statistical interpretability—especially important for communicating with stakeholders.\nSHAP reveals feature influence in practice, offering insight into model behavior across the full dataset.\n\nTogether, they offer a complete view: coefficients tell us how the model is built; SHAP shows how it behaves. This enables data-informed HR strategy grounded in both modeling logic and real-world impact.\n\n\n\n\n\n\n\n\n\nModel intercept: -1.854"
+  }
+]

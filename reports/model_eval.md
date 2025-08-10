@@ -2,7 +2,7 @@
 
 This report documents the modeling process and evaluation results using logistic regression as the baseline model for predicting employee attrition. The modeling was executed in `03_modeling.ipynb`.
 
----
+***
 
 ## 1. Model Selection
 
@@ -14,7 +14,7 @@ We used **logistic regression** due to its transparency and suitability for bina
 - Solver: `'liblinear'`
 - Maximum iterations: 1000
 
----
+***
 
 ## 2. Cross-Validation Performance (Threshold = 0.5)
 
@@ -29,7 +29,7 @@ The initial model was evaluated using stratified 5-fold cross-validation on the 
 
 The model was well-calibrated, though recall was somewhat limited at the default threshold.
 
----
+***
 
 ## 3. Threshold Tuning
 
@@ -39,7 +39,7 @@ Using the validation set, we swept probability thresholds and identified the opt
 
 This was selected to maximize the F1 score for the minority class (Attrition = Yes).
 
----
+***
 
 ## 4. Final Evaluation on Test Set (Threshold = 0.72)
 
@@ -62,7 +62,7 @@ Using the optimized threshold, we evaluated the model on the untouched test set.
 
 This demonstrates meaningful improvements in recall and precision over the default threshold. The model correctly identifies approximately half of the attriting employees while maintaining a manageable false positive rate.
 
----
+***
 
 ## 5. Interpretation
 
@@ -72,7 +72,7 @@ This demonstrates meaningful improvements in recall and precision over the defau
 
 These results validate logistic regression as a transparent, balanced model that can reasonably distinguish between at-risk and stable employees when paired with domain-aware feature engineering and appropriate threshold tuning.
 
----
+***
 
 ## 6. Next Steps
 

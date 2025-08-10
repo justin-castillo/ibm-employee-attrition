@@ -69,3 +69,5 @@ Thumbs.db
 *.aux
 *.toc
 *.nbconvert.ipynb
+
+/.quarto/
