@@ -4,7 +4,7 @@ This project applies interpretable machine learning techniques to predict employ
 
 ---
 
-## 📊 Objective
+## Objective
 
 Predict which employees are at risk of leaving the company and understand *why*, using:
 

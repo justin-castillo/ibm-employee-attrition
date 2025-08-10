@@ -1,49 +1,49 @@
 [
   {
-    "objectID": "reports/model_eval.html",
-    "href": "reports/model_eval.html",
+    "objectID": "reports/Modeling_Report.html",
+    "href": "reports/Modeling_Report.html",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "This report documents the modeling process and evaluation results using logistic regression as the baseline model for predicting employee attrition. The modeling was executed in 03_modeling.ipynb.\n\n\n\nWe used logistic regression due to its transparency and suitability for binary classification tasks with tabular data. The model was embedded in a pipeline with:\n\nCustom feature engineering (FeatureEngineer)\nColumn transformations (OneHot, Ordinal, StandardScaler)\nClass weighting set to 'balanced'\nSolver: 'liblinear'\nMaximum iterations: 1000\n\n\n\n\n\nThe initial model was evaluated using stratified 5-fold cross-validation on the training data.\nMetrics (mean across folds): - Accuracy: 0.85 - ROC AUC: 0.77 - Precision (Attrition = Yes): 0.49 - Recall (Attrition = Yes): 0.44 - F1 Score: 0.46\nThe model was well-calibrated, though recall was somewhat limited at the default threshold.\n\n\n\n\nUsing the validation set, we swept probability thresholds and identified the optimal threshold as:\nBest Threshold: 0.72\nThis was selected to maximize the F1 score for the minority class (Attrition = Yes).\n\n\n\n\nUsing the optimized threshold, we evaluated the model on the untouched test set.\nMetrics on Test Data:\n\nAccuracy: 0.86\nROC AUC: 0.78\nPrecision: 0.53\nRecall: 0.51\nF1 Score: 0.52\n\nConfusion Matrix:\n\n\n\n\nPredicted No\nPredicted Yes\n\n\n\n\nActual No\n233\n15\n\n\nActual Yes\n18\n19\n\n\n\nThis demonstrates meaningful improvements in recall and precision over the default threshold. The model correctly identifies approximately half of the attriting employees while maintaining a manageable false positive rate.\n\n\n\n\n\nRecall improved from 44% → 51% after threshold tuning.\nPrecision increased to 53%, indicating a better balance of false positives and true positives.\nROC AUC of 0.78 indicates strong overall ranking performance.\n\nThese results validate logistic regression as a transparent, balanced model that can reasonably distinguish between at-risk and stable employees when paired with domain-aware feature engineering and appropriate threshold tuning.\n\n\n\n\n\nUse SHAP values to explain individual predictions and global feature impacts.\nOptionally compare with higher-capacity models (e.g., CatBoost, XGBoost) to explore tradeoffs between accuracy and explainability.\nApply model to identify high-risk cohorts in operational HR data."
   },
   {
-    "objectID": "reports/model_eval.html#model-selection",
-    "href": "reports/model_eval.html#model-selection",
+    "objectID": "reports/Modeling_Report.html#model-selection",
+    "href": "reports/Modeling_Report.html#model-selection",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "We used logistic regression due to its transparency and suitability for binary classification tasks with tabular data. The model was embedded in a pipeline with:\n\nCustom feature engineering (FeatureEngineer)\nColumn transformations (OneHot, Ordinal, StandardScaler)\nClass weighting set to 'balanced'\nSolver: 'liblinear'\nMaximum iterations: 1000"
   },
   {
-    "objectID": "reports/model_eval.html#cross-validation-performance-threshold-0.5",
-    "href": "reports/model_eval.html#cross-validation-performance-threshold-0.5",
+    "objectID": "reports/Modeling_Report.html#cross-validation-performance-threshold-0.5",
+    "href": "reports/Modeling_Report.html#cross-validation-performance-threshold-0.5",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "The initial model was evaluated using stratified 5-fold cross-validation on the training data.\nMetrics (mean across folds): - Accuracy: 0.85 - ROC AUC: 0.77 - Precision (Attrition = Yes): 0.49 - Recall (Attrition = Yes): 0.44 - F1 Score: 0.46\nThe model was well-calibrated, though recall was somewhat limited at the default threshold."
   },
   {
-    "objectID": "reports/model_eval.html#threshold-tuning",
-    "href": "reports/model_eval.html#threshold-tuning",
+    "objectID": "reports/Modeling_Report.html#threshold-tuning",
+    "href": "reports/Modeling_Report.html#threshold-tuning",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "Using the validation set, we swept probability thresholds and identified the optimal threshold as:\nBest Threshold: 0.72\nThis was selected to maximize the F1 score for the minority class (Attrition = Yes)."
   },
   {
-    "objectID": "reports/model_eval.html#final-evaluation-on-test-set-threshold-0.72",
-    "href": "reports/model_eval.html#final-evaluation-on-test-set-threshold-0.72",
+    "objectID": "reports/Modeling_Report.html#final-evaluation-on-test-set-threshold-0.72",
+    "href": "reports/Modeling_Report.html#final-evaluation-on-test-set-threshold-0.72",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "Using the optimized threshold, we evaluated the model on the untouched test set.\nMetrics on Test Data:\n\nAccuracy: 0.86\nROC AUC: 0.78\nPrecision: 0.53\nRecall: 0.51\nF1 Score: 0.52\n\nConfusion Matrix:\n\n\n\n\nPredicted No\nPredicted Yes\n\n\n\n\nActual No\n233\n15\n\n\nActual Yes\n18\n19\n\n\n\nThis demonstrates meaningful improvements in recall and precision over the default threshold. The model correctly identifies approximately half of the attriting employees while maintaining a manageable false positive rate."
   },
   {
-    "objectID": "reports/model_eval.html#interpretation",
-    "href": "reports/model_eval.html#interpretation",
+    "objectID": "reports/Modeling_Report.html#interpretation",
+    "href": "reports/Modeling_Report.html#interpretation",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "Recall improved from 44% → 51% after threshold tuning.\nPrecision increased to 53%, indicating a better balance of false positives and true positives.\nROC AUC of 0.78 indicates strong overall ranking performance.\n\nThese results validate logistic regression as a transparent, balanced model that can reasonably distinguish between at-risk and stable employees when paired with domain-aware feature engineering and appropriate threshold tuning."
   },
   {
-    "objectID": "reports/model_eval.html#next-steps",
-    "href": "reports/model_eval.html#next-steps",
+    "objectID": "reports/Modeling_Report.html#next-steps",
+    "href": "reports/Modeling_Report.html#next-steps",
     "title": "Modeling Evaluation Report – Logistic Regression for Employee Attrition",
     "section": "",
     "text": "Use SHAP values to explain individual predictions and global feature impacts.\nOptionally compare with higher-capacity models (e.g., CatBoost, XGBoost) to explore tradeoffs between accuracy and explainability.\nApply model to identify high-risk cohorts in operational HR data."
@@ -123,7 +123,7 @@
     "href": "notebooks/04_interpretation.html#why-this-matters-next-to-shap",
     "title": "Interpretation",
     "section": "Why This Matters Next to SHAP",
-    "text": "Why This Matters Next to SHAP\nCoefficients nail down direction and isolated strength; SHAP (previous sections) adds context and interaction effects. The overlap—travel frequency, overtime, and early tenure—strengthens confidence that these are genuine, actionable signals.\nBottom line:\nTravel intensity and high workload sit at the heart of attrition risk, while specialised skills, managerial stability, and advanced education anchor employees. Coefficients and SHAP together give a consistent, multi-angle narrative to steer targeted retention strategies.\n\n\n\n\n\n\n\n\n\nModel intercept: -3.566"
+    "text": "Why This Matters Next to SHAP\nCoefficients nail down direction and isolated strength; SHAP (previous sections) adds context and interaction effects. The overlap—travel frequency, overtime, and early tenure—strengthens confidence that these are genuine, actionable signals.\nBottom line:\nTravel intensity and high workload sit at the heart of attrition risk, while specialised skills, managerial stability, and advanced education anchor employees. Coefficients and SHAP together give a consistent, multi-angle narrative to steer targeted retention strategies.\n\n\n\n\n\n\n\n\n\nModel intercept: -3.605"
   },
   {
     "objectID": "notebooks/02_preprocessing.html#notebook-overview",
@@ -322,38 +322,66 @@
     "text": "Notebook outline\n\nLoad dataset and preprocessing pipeline\n\nCross-validation evaluation\n\nThreshold tuning\n\nGeneralizability\n\nSummary and exports"
   },
   {
-    "objectID": "notebooks/05_final_report.html",
-    "href": "notebooks/05_final_report.html",
-    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "objectID": "reports/Final_Report.html",
+    "href": "reports/Final_Report.html",
+    "title": "Final Report",
     "section": "",
-    "text": "This report presents the final results and business interpretation of a predictive modeling project to identify employees at risk of leaving the company. The objective was to create an accurate and explainable classification model using the IBM HR Analytics dataset.\nKey techniques: - Custom feature engineering - Cross-validated model selection - Threshold optimization - SHAP and LIME explainability"
+    "text": "This report turns our HR data into clear, actionable guidance for reducing turnover (attrition)—showing which employees are most likely to leave and why. The model consistently points to frequent travel, overtime, and short tenure as the biggest warning signs.\n\n\n\n\nFinal model: Logistic Regression (with SMOTE on train), tuned via 5-fold GridSearch.\n\nOperating threshold: 0.79 (selected to maximize F1 on validation).\n\nValidation (thr=0.79): AUC 0.827, Accuracy 0.874, Precision 0.632, Recall 0.511, F1 0.565.\n\nTest (thr=0.79): AUC 0.808, Accuracy 0.861, Precision 0.571, Recall 0.511, F1 0.539.\n\nKey drivers (global): frequent travel, overtime, short tenure; protective signals include long tenure, life sciences/medical education, and managerial roles.\n\n\n\n\nalt text\n\n\n\n\n\n\n\nDataset shape: 1,470 rows × 35 columns originally; after dropping non-informative columns, 31 columns remain.\n\nTarget distribution: 83.88% No, 16.12% Yes (significant class imbalance).\n\nNotable patterns: Overtime employees are nearly 3× more likely to leave; higher attrition among younger staff, longer commutes, lower income/stock options, and certain roles (Sales, Laboratory Technician).\n\nCorrelations: Compensation & tenure metrics cluster strongly (e.g., JobLevel ↔︎ MonthlyIncome), while satisfaction metrics are largely independent.\n\n \n\n\n\n\nPipeline highlights (exported as models/preprocessing_pipeline.pkl):\n\nFeature engineering (subset): TenureCategory, TenureGap, TenureRatio, ZeroCompanyTenureFlag, NewJoinerFlag, OverTime_JobLevel, Travel_Occupation, SatisfactionMean, SatisfactionRange, SatisfactionStability, Log_MonthlyIncome, Log_DistanceFromHome, LowIncomeFlag, StressRisk.\nTransforms: One-hot encode key categoricals; standardize numeric features; pass through engineered binary flags.\nLeakage control: Fit pipeline on train only; apply consistently across splits.\n\n\n\n\n\nData split: 60/20/20 (train/validation/test), stratified. After transformation: Train (882 × 75), Val (294 × 75), Test (294 × 75).\nResampling: SMOTE on train only.\nSearch space: C ∈ {0.01, 0.1, 1, 10}, penalties l1|l2, class_weight ∈ {None, \"balanced\"}; best CV AUC ≈ 0.896.\nValidation ROC AUC: 0.827; threshold tuning across 0.01–0.99 → best threshold = 0.79 (max F1).\nValidation metrics @ 0.79\n- Precision 0.632 | Recall 0.511 | F1 0.565 | Accuracy 0.874 | AUC 0.827\nTest metrics @ 0.79\n- Precision 0.571 | Recall 0.511 | F1 0.539 | Accuracy 0.861 | AUC 0.808\n   \n\n\n\n\nGlobal drivers (SHAP):\n- Risk ↑: Frequent travel (esp. Sales roles), Overtime, Short tenure (≤3 yrs), more prior companies.\n- Risk ↓: Long tenure/total working years, higher satisfaction, stock options/raises, life sciences/medical education, managerial roles; older age modestly protective.\nModel internals: Logistic regression intercept ≈ -3.606. Coefficient view aligns with SHAP: travel intensity and workload amplify risk; tenure/skills/management stability reduce it.\nSuggested visuals:     \n\n\n\n\n\nTarget high-burnout segments: Sales roles with frequent travel and overtime.\n\nTenure-building: Reduce early exits (≤3 yrs) via onboarding, mentorship, and defined promotion paths.\n\nIncentives: Maintain competitive raises/stock options to anchor mid-tenure staff.\n\nCommute-aware flexibility: Where feasible, remote/hybrid options for long-commute employees.\n\n\n\n\n\n\nSynthetic dataset; findings should be validated against real HR data before policy changes.\n\nImbalance remains; threshold and cost-sensitive tuning should be revisited per business tolerance for false positives/negatives.\n\nMonitor for fairness across demographics during deployment (post-hoc checks and periodic audits).\n\n\n\n\n\n\nEvaluate alternative models (e.g., gradient boosting) with calibration and cost curves.\n\nPilot interventions for high-risk cohorts; A/B test impact on attrition rates.\n\nBuild a lightweight scoring & explanation service using the saved pipeline + model."
   },
   {
-    "objectID": "notebooks/05_final_report.html#project-overview",
-    "href": "notebooks/05_final_report.html#project-overview",
-    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
+    "objectID": "reports/Final_Report.html#executive-summary",
+    "href": "reports/Final_Report.html#executive-summary",
+    "title": "Final Report",
     "section": "",
-    "text": "This report presents the final results and business interpretation of a predictive modeling project to identify employees at risk of leaving the company. The objective was to create an accurate and explainable classification model using the IBM HR Analytics dataset.\nKey techniques: - Custom feature engineering - Cross-validated model selection - Threshold optimization - SHAP and LIME explainability"
+    "text": "Final model: Logistic Regression (with SMOTE on train), tuned via 5-fold GridSearch.\n\nOperating threshold: 0.79 (selected to maximize F1 on validation).\n\nValidation (thr=0.79): AUC 0.827, Accuracy 0.874, Precision 0.632, Recall 0.511, F1 0.565.\n\nTest (thr=0.79): AUC 0.808, Accuracy 0.861, Precision 0.571, Recall 0.511, F1 0.539.\n\nKey drivers (global): frequent travel, overtime, short tenure; protective signals include long tenure, life sciences/medical education, and managerial roles.\n\n\n\n\nalt text"
   },
   {
-    "objectID": "notebooks/05_final_report.html#summary-of-modeling-pipeline",
-    "href": "notebooks/05_final_report.html#summary-of-modeling-pipeline",
-    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
-    "section": "2. Summary of Modeling Pipeline",
-    "text": "2. Summary of Modeling Pipeline\nThe model used in this report is the best-performing classifier identified during the 03_modeling.ipynb phase. The pipeline includes: - Preprocessing (encoding, scaling, feature engineering) - Classification using [INSERT MODEL NAME, e.g., CatBoostClassifier] - Threshold tuning based on validation AUC and F1 score\nThe model and the optimal threshold were saved and loaded here for final evaluation.\n\n\n\nEvaluation at Optimal Threshold (0.72)\nAccuracy: 0.850\nPrecision: 0.533\nRecall: 0.511\nF1 Score: 0.522\nROC AUC: 0.779"
+    "objectID": "reports/Final_Report.html#data-eda",
+    "href": "reports/Final_Report.html#data-eda",
+    "title": "Final Report",
+    "section": "",
+    "text": "Dataset shape: 1,470 rows × 35 columns originally; after dropping non-informative columns, 31 columns remain.\n\nTarget distribution: 83.88% No, 16.12% Yes (significant class imbalance).\n\nNotable patterns: Overtime employees are nearly 3× more likely to leave; higher attrition among younger staff, longer commutes, lower income/stock options, and certain roles (Sales, Laboratory Technician).\n\nCorrelations: Compensation & tenure metrics cluster strongly (e.g., JobLevel ↔︎ MonthlyIncome), while satisfaction metrics are largely independent."
   },
   {
-    "objectID": "notebooks/05_final_report.html#interpretability-summary",
-    "href": "notebooks/05_final_report.html#interpretability-summary",
-    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
-    "section": "4. Interpretability Summary",
-    "text": "4. Interpretability Summary\nWe use SHAP and to explain model predictions and provide decision transparency.\n\nGlobal explanations (SHAP summary plot) identify which features most influence predictions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLogistic Regression Coefficients\nLogistic regression provides a direct mapping between each feature and the model’s predicted log-odds of attrition. Positive coefficients increase the odds of attrition; negative coefficients reduce it.\nIn this case: - Features like OverTime_Yes, LowIncomeFlag, and StressRisk have strong positive coefficients, meaning they increase attrition risk. - Features such as SatisfactionStability and YearsCompany_Satisfaction have negative coefficients, indicating they reduce attrition risk. - The model intercept is {:.2f}, representing the baseline log-odds when all features are zero (which is mostly theoretical in this context).\nThese coefficients align closely with SHAP results, validating both the feature importance rankings and the directionality of their impact.\n\n\n✅ Final feature name count: 48"
+    "objectID": "reports/Final_Report.html#preprocessing-feature-engineering",
+    "href": "reports/Final_Report.html#preprocessing-feature-engineering",
+    "title": "Final Report",
+    "section": "",
+    "text": "Pipeline highlights (exported as models/preprocessing_pipeline.pkl):\n\nFeature engineering (subset): TenureCategory, TenureGap, TenureRatio, ZeroCompanyTenureFlag, NewJoinerFlag, OverTime_JobLevel, Travel_Occupation, SatisfactionMean, SatisfactionRange, SatisfactionStability, Log_MonthlyIncome, Log_DistanceFromHome, LowIncomeFlag, StressRisk.\nTransforms: One-hot encode key categoricals; standardize numeric features; pass through engineered binary flags.\nLeakage control: Fit pipeline on train only; apply consistently across splits."
   },
   {
-    "objectID": "notebooks/05_final_report.html#interpretation-of-logistic-regression-coefficients-and-shap-values",
-    "href": "notebooks/05_final_report.html#interpretation-of-logistic-regression-coefficients-and-shap-values",
-    "title": "Final Report – Predicting Employee Attrition with Explainable ML",
-    "section": "Interpretation of Logistic Regression Coefficients and SHAP Values",
-    "text": "Interpretation of Logistic Regression Coefficients and SHAP Values\nThis section combines two complementary methods—logistic regression coefficients and SHAP values—to explain model behavior and feature influence on employee attrition.\n\nLogistic Regression Coefficients\nLogistic regression provides a direct mapping between each feature and the model’s predicted log-odds of attrition. Coefficients are expressed in log-odds units:\n\nPositive coefficients increase the log-odds of attrition (higher likelihood of leaving).\nNegative coefficients decrease the log-odds of attrition (lower likelihood of leaving).\n\n\nTop Positive Predictors (Higher Attrition Risk)\nThe strongest positively associated predictors of attrition are:\n\nEducationField_Technical Degree and JobRole_Research Scientist: Employees in these categories are substantially more likely to leave.\nBusinessTravel_Non-Travel and JobRole_Healthcare Representative: Indicate an inverse correlation with job stability—possibly due to feelings of stagnation or limited exposure to opportunities.\nOther notable contributions include BusinessTravel_Travel_Frequently, JobRole_Research Director, and JobRole_Manager.\n\nThese features suggest attrition patterns linked to job role fit and education backgrounds, possibly due to unmet expectations or better external opportunities.\n\n\nTop Negative Predictors (Lower Attrition Risk)\nNegatively weighted predictors include:\n\nJobRole_Human Resources, JobRole_Manufacturing Director, and JobRole_Sales Executive: These roles may offer more stability, fulfillment, or better retention strategies.\nJobLevel, EnvironmentSatisfaction, WorkLifeBalance, and PerformanceRating: Indicate more engaged employees and those receiving better benefits or ratings are less likely to leave.\nOverTime_No, DistanceFromHome, and MonthlyIncome: Suggest improved work-life balance and retention.\nMaritalStatus_Single and BusinessTravel_Rarely: Slight negative effects, possibly indicating resilience or lesser burden from commuting in some contexts.\n\n\n\nMinimal Impact or Ambiguous Features\nSeveral features cluster around a coefficient near 0, indicating negligible direct influence:\n\nEducation, Age, and HourlyRate: These features do not strongly signal attrition in this dataset once other features are accounted for.\nGender_Female and Gender_Male: Suggest gender neutrality in attrition risk.\nEducationField_Marketing, JobRole_Laboratory Technician, and MonthlyRate: Likely minimal effects.\n\nThe model intercept is approximately -1.85, indicating that in the absence of any features (i.e., all coefficients = 0), the baseline log-odds of attrition are negative—translating to a low base probability of attrition in the general employee population.\n\n\n\n\nSHAP Value Interpretation\nSHAP values explain model predictions on a per-observation level. Each value shows the contribution of a feature to the final prediction:\n\nSHAP plots reflect average impact across all records, capturing feature interactions and value distributions.\nUnlike logistic coefficients, SHAP does not separate dummy variables but aggregates by original features (e.g., JobRole, BusinessTravel).\n\n\nUnique SHAP Insights\n\nFeatures such as NumCompaniesWorked, TotalWorkingYears, YearsWithCurrManager, and EnvironmentSatisfaction rank highly by SHAP impact, even if their logistic coefficients are small.\nSHAP surfaces how often and how significantly each feature shifts the prediction toward or away from attrition.\nSHAP values are especially useful for model auditing, fairness checks, and explaining individual predictions.\n\n\n\n\n\nFinal Thoughts\nThis analysis highlights the value of combining both techniques:\n\nLogistic regression provides directionality, transparency, and statistical interpretability—especially important for communicating with stakeholders.\nSHAP reveals feature influence in practice, offering insight into model behavior across the full dataset.\n\nTogether, they offer a complete view: coefficients tell us how the model is built; SHAP shows how it behaves. This enables data-informed HR strategy grounded in both modeling logic and real-world impact.\n\n\n\n\n\n\n\n\n\nModel intercept: -1.854"
+    "objectID": "reports/Final_Report.html#modeling",
+    "href": "reports/Final_Report.html#modeling",
+    "title": "Final Report",
+    "section": "",
+    "text": "Data split: 60/20/20 (train/validation/test), stratified. After transformation: Train (882 × 75), Val (294 × 75), Test (294 × 75).\nResampling: SMOTE on train only.\nSearch space: C ∈ {0.01, 0.1, 1, 10}, penalties l1|l2, class_weight ∈ {None, \"balanced\"}; best CV AUC ≈ 0.896.\nValidation ROC AUC: 0.827; threshold tuning across 0.01–0.99 → best threshold = 0.79 (max F1).\nValidation metrics @ 0.79\n- Precision 0.632 | Recall 0.511 | F1 0.565 | Accuracy 0.874 | AUC 0.827\nTest metrics @ 0.79\n- Precision 0.571 | Recall 0.511 | F1 0.539 | Accuracy 0.861 | AUC 0.808"
+  },
+  {
+    "objectID": "reports/Final_Report.html#interpretation",
+    "href": "reports/Final_Report.html#interpretation",
+    "title": "Final Report",
+    "section": "",
+    "text": "Global drivers (SHAP):\n- Risk ↑: Frequent travel (esp. Sales roles), Overtime, Short tenure (≤3 yrs), more prior companies.\n- Risk ↓: Long tenure/total working years, higher satisfaction, stock options/raises, life sciences/medical education, managerial roles; older age modestly protective.\nModel internals: Logistic regression intercept ≈ -3.606. Coefficient view aligns with SHAP: travel intensity and workload amplify risk; tenure/skills/management stability reduce it.\nSuggested visuals:"
+  },
+  {
+    "objectID": "reports/Final_Report.html#business-implications-recommendations",
+    "href": "reports/Final_Report.html#business-implications-recommendations",
+    "title": "Final Report",
+    "section": "",
+    "text": "Target high-burnout segments: Sales roles with frequent travel and overtime.\n\nTenure-building: Reduce early exits (≤3 yrs) via onboarding, mentorship, and defined promotion paths.\n\nIncentives: Maintain competitive raises/stock options to anchor mid-tenure staff.\n\nCommute-aware flexibility: Where feasible, remote/hybrid options for long-commute employees."
+  },
+  {
+    "objectID": "reports/Final_Report.html#risks-notes",
+    "href": "reports/Final_Report.html#risks-notes",
+    "title": "Final Report",
+    "section": "",
+    "text": "Synthetic dataset; findings should be validated against real HR data before policy changes.\n\nImbalance remains; threshold and cost-sensitive tuning should be revisited per business tolerance for false positives/negatives.\n\nMonitor for fairness across demographics during deployment (post-hoc checks and periodic audits)."
+  },
+  {
+    "objectID": "reports/Final_Report.html#next-steps",
+    "href": "reports/Final_Report.html#next-steps",
+    "title": "Final Report",
+    "section": "",
+    "text": "Evaluate alternative models (e.g., gradient boosting) with calibration and cost curves.\n\nPilot interventions for high-risk cohorts; A/B test impact on attrition rates.\n\nBuild a lightweight scoring & explanation service using the saved pipeline + model."
   }
 ]
