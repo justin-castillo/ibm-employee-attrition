@@ -1,5 +1,3 @@
-# Employee Attrition Prediction: Explainable Machine Learning Report
-
 This project applies interpretable machine learning techniques to predict employee attrition using logistic regression, with a focus on transparency and stakeholder communication. Both **global** and **local** model explanations are included, leveraging model coefficients and SHAP values.
 
 ---
@@ -32,7 +30,7 @@ Logistic regression provides a direct mapping between feature values and their c
 - **Minimal Impact Features**:  
   Features like `Gender`, `Education`, and `JobRole_Human Resources` showed negligible coefficient values.
 
-### [Insert Coefficients Bar Chart Here]
+![alt text](exports/figures_2/01_coefficients_bar_plot.png)
 
 ---
 
@@ -52,8 +50,8 @@ SHAP values explain predictions on a per-observation basis and provide model-agn
 - **Contrast With Coefficients**:  
   Some features with low coefficients (e.g. `NumCompaniesWorked`) had high SHAP impact—emphasizing their interaction effects or conditional relevance.
 
-### [Insert SHAP Summary Plot Here]  
-### [Insert SHAP Beeswarm Plot Here]
+![alt text](exports/figures_2/02_shap_summary.png)
+
 
 ---
 

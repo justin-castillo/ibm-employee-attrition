@@ -2,7 +2,7 @@
 
 This report turns our HR data into clear, actionable guidance for reducing turnover (attrition)—showing which employees are most likely to leave and why. The model consistently points to frequent travel, overtime, and short tenure as the biggest warning signs.
 
----
+***
 
 ## Executive Summary
 
@@ -14,9 +14,9 @@ This report turns our HR data into clear, actionable guidance for reducing turno
 
 ![alt text](../exports/figures_1/ROC_curve_test.png)
 
----
+***
 
-## 1) Data & EDA
+## 1. Data & EDA
 
 - **Dataset shape:** 1,470 rows × 35 columns originally; after dropping non-informative columns, **31 columns** remain.  
 - **Target distribution:** 83.88% *No*, 16.12% *Yes* (significant class imbalance).  
@@ -26,9 +26,9 @@ This report turns our HR data into clear, actionable guidance for reducing turno
 ![alt text](../exports/figures_1/02_class_distribution.png)
 ![alt text](../exports/figures_1/03_correlation_heatmap.png)
 
----
+***
 
-## 2) Preprocessing & Feature Engineering 
+## 2. Preprocessing & Feature Engineering 
 
 **Pipeline highlights** (exported as `models/preprocessing_pipeline.pkl`):
 
@@ -36,9 +36,9 @@ This report turns our HR data into clear, actionable guidance for reducing turno
 - **Transforms:** One-hot encode key categoricals; standardize numeric features; pass through engineered binary flags.
 - **Leakage control:** Fit pipeline on **train only**; apply consistently across splits.
 
----
+***
 
-## 3) Modeling 
+## 3. Modeling 
 
 **Data split:** 60/20/20 (train/validation/test), stratified. After transformation: **Train (882 × 75)**, **Val (294 × 75)**, **Test (294 × 75)**.  
 **Resampling:** SMOTE on **train** only.  
@@ -56,9 +56,9 @@ This report turns our HR data into clear, actionable guidance for reducing turno
 ![alt text](../exports/figures_1/08_confusion_matrix_05.png)
 ![alt text](../exports/figures_1/07_confusion_matrix_test.png)
 
----
+***
 
-## 4) Interpretation
+## 4. Interpretation
 
 **Global drivers (SHAP):**  
 - **Risk ↑**: Frequent travel (esp. Sales roles), Overtime, Short tenure (≤3 yrs), more prior companies.  
@@ -73,29 +73,29 @@ Suggested visuals:
 ![alt text](<../exports/figures_1/12_waterfall _low_risk.png>)
 ![alt text](../exports/figures_1/13_top_coef.png)
 
----
+***
 
-## 5) Business Implications & Recommendations
+## 5. Business Implications & Recommendations
 
 1) **Target high-burnout segments:** Sales roles with **frequent travel** and **overtime**.  
 2) **Tenure-building:** Reduce early exits (≤3 yrs) via onboarding, mentorship, and defined promotion paths.  
 3) **Incentives:** Maintain competitive raises/stock options to anchor mid-tenure staff.  
 4) **Commute-aware flexibility:** Where feasible, remote/hybrid options for long-commute employees.
 
----
+***
 
-## 6) Risks & Notes
+## 6. Risks & Notes
 
 - Synthetic dataset; findings should be validated against real HR data before policy changes.  
 - Imbalance remains; threshold and cost-sensitive tuning should be revisited per business tolerance for false positives/negatives.  
 - Monitor for **fairness** across demographics during deployment (post-hoc checks and periodic audits).
 
----
+***
 
-## 7) Next Steps
+## 7. Next Steps
 
 - Evaluate alternative models (e.g., gradient boosting) with **calibration** and **cost curves**.  
 - Pilot interventions for high-risk cohorts; A/B test impact on attrition rates.  
 - Build a lightweight scoring & explanation service using the saved pipeline + model.
 
----
+
